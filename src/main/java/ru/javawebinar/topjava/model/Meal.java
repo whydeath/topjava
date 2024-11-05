@@ -4,32 +4,28 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class Meal {
-    private Integer id;
 
-    private final LocalDateTime dateTime;
+import java.time.LocalDateTime;
 
-    private final String description;
+public class Meal extends AbstractBaseEntity {
+    private LocalDateTime dateTime;
+    private String description;
+    private int calories;
+    private int userId;
 
-    private final int calories;
+    public Meal() {
+        super(null);  // Вызываем конструктор родителя с null в качестве id
+    }
 
     public Meal(LocalDateTime dateTime, String description, int calories) {
         this(null, dateTime, description, calories);
     }
 
     public Meal(Integer id, LocalDateTime dateTime, String description, int calories) {
-        this.id = id;
+        super(id);
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public LocalDateTime getDateTime() {
@@ -44,6 +40,35 @@ public class Meal {
         return calories;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
     public LocalDate getDate() {
         return dateTime.toLocalDate();
     }
@@ -55,14 +80,15 @@ public class Meal {
     public boolean isNew() {
         return id == null;
     }
-
     @Override
     public String toString() {
         return "Meal{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
+                ", userId=" + userId +
                 '}';
     }
+
 }

@@ -1,27 +1,17 @@
-<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
-<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"-->
-<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">-->
-
-<!--&lt;!&ndash;-->
-<!--    <bean class="ru.javawebinar.topjava.repository.inmemory.InMemoryUserRepository" id="inmemoryUserRepository"/>-->
-
-<!--    <bean class="ru.javawebinar.topjava.service.UserService">-->
-<!--        <constructor-arg name="repository" ref="inmemoryUserRepository"/>-->
-<!--    </bean>-->
-<!--&ndash;&gt;-->
-<!--    <context:component-scan base-package="ru.javawebinar.**.repository"/>-->
-
-<!--    <context:component-scan base-package="ru.javawebinar.**.service"/>-->
-
-<!--    <context:component-scan base-package="ru.javawebinar.**.web"/>-->
-
-<!--</beans>-->
-
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="ru.javawebinar.topjava"/>
+    <!-- Сканируем репозитории -->
+    <context:component-scan base-package="ru.javawebinar.topjava.repository"/>
+
+    <!-- Сканируем сервисы -->
+    <context:component-scan base-package="ru.javawebinar.topjava.service"/>
+
+    <!-- Сканируем веб-компоненты -->
+    <context:component-scan base-package="ru.javawebinar.topjava.web"/>
+
 </beans>

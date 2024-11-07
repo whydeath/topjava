@@ -1,4 +1,4 @@
-[Java Enterprise Online Project](https://javaops.ru/view/topjava)
+Java Enterprise Online Project 
 ===============================
 Разработка полнофункционального Spring/JPA Enterprise приложения c авторизацией и правами доступа на основе ролей с использованием наиболее популярных инструментов и технологий Java: Maven, Spring MVC, Security, JPA(Hibernate), REST(Jackson), Bootstrap (css,js), DataTables, jQuery + plugins, Java 8 Stream and Time API и хранением в базах данных Postgresql и HSQLDB.
 
@@ -14,7 +14,7 @@
 ## <a href="description.md">Описание и план проекта</a>
 ### <a href="http://javaops-demo.ru/topjava" target=_blank>Демо разрабатываемого приложения</a>
 ### [Изменения проекта (Release Notes)](ReleaseNotes.md)
-### <a href='https://github.com/JavaOPs/topjava/wiki/Стажировка--Enterprise-Java-разработчик-(TopJava)-'>Требования к участникам, Wiki</a>
+### <a href='https://github.com/JavaOPs/topjava/wiki/Стажировка-"Enterprise-Java-разработчик-(TopJava)"'>Требования к участникам, Wiki</a>
 ### <a href="cv.md">Составление резюме, подготовка к интервью, поиск работы</a>
 
 Обновленное вводное занятие (обязательно смотреть все видео)
@@ -37,12 +37,9 @@
 
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 5. [Системы управления версиями. Git](doc/video5-vcs-git.md)</a>
 
-##  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 6. <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFZDdaaU5fZEo4X3c/view?resourcekey=0-DvpzWIlMHZ7KX_v1SMuiAw" name="project">Работа с проектом (выполнять инструкции)</a>
+##  ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 6. <a href="https://drive.google.com/file/d/0B9Ye2auQ_NsFZDdaaU5fZEo4X3c/view?resourcekey=0-DvpzWIlMHZ7KX_v1SMuiAw">Работа с проектом (выполнять инструкции)</a>
 - **ВНИМАНИЕ: выбирайте для проекта простой пусть без пробелов и русских букв, например, `c:\projects\topjava\` (Windows). Иначе впоследствии будут проблемы**
 - **Плагин Git Intergation уже не требуется, а вкладку `Version control` в IDEA переименовали в `Git`**
-- **C Ultimate IDEA сейчас сложности**, надеемся что временные.
-  -  Скачать IDEA и установливать плагины [можно по инструкции](https://github.com/JavaOPs/topjava/wiki/IDEA#download)
-  -  После Trial 30 дней [способы продлить использование](https://github.com/JavaOPs/topjava/wiki/IDEA#licence)
 
 Для переключения режима отображения изменений из вкладки `Commit` в `Git: Local Changes` нужно переключить `Settings/Preferences | Version Control | Commit | Use non-modal commit interface` или в контекстном меню вкладки `Commit`:
 
@@ -80,7 +77,6 @@
 -  Переключиться в основную ветку проекта `master`.
 
 ## ![video](https://cloud.githubusercontent.com/assets/13649199/13672715/06dbc6ce-e6e7-11e5-81a9-04fbddb9e488.png) 7. [Maven](https://drive.google.com/file/d/1qEJTwv9FNUQjx-y9MSydH01xaAne0-hu)
-- [Как установить Maven 3 на Ubuntu или Windows](https://devcolibri.com/как-установить-maven-3-на-ubuntu-или-windows/)
 - [Руководство по Maven](https://topjava.ru/blog/apache-maven-osnovy-1)
 - Wiki: [Apache Maven](https://ru.wikipedia.org/wiki/Apache_Maven)
 - [The Central Repository](http://search.maven.org)
@@ -137,7 +133,6 @@
 -  <a href="https://www.youtube.com/watch?v=hEyCK4ueBlc">Алексей Владыкин: Элементы функционального программирования в Java</a>
 -  <a href="https://www.youtube.com/watch?v=iD8H7cmxw_w">Yakov Fain о новом в Java 8</a>
 -  <a href="http://stackoverflow.com/questions/28319064/java-8-best-way-to-transform-a-list-map-or-foreach">stream.map vs forEach</a
--  [Руководство по Java Stream в Java 8](https://javarush.com.ua/groups/posts/3974-kofe-breyk-177-podrobnoe-rukovodstvo-po-java-stream-v-java-8)
 -  Дополнительно
    - [Сергей Куксенко — Stream API, часть 1](https://www.youtube.com/watch?v=O8oN4KSZEXE)
    - [Сергей Куксенко — Stream API, часть 2](https://www.youtube.com/watch?v=i0Jr2l3jrDA)
@@ -147,7 +142,7 @@
     - без циклов по другим коллекциям/массивам (к ним также относим методы коллекций `addAll()/removeAll()`)
 - через Stream API за 1 проход по исходному списку `meals.stream()`
     - нельзя использовать внешние коллекции, не являющиеся частью коллектора
-  - возможно дополнительные проходы по частям списка, при этом превышение должно считаться один раз для всего подсписка. Те например нельзя разбить список на на 2 подсписка с четными и нечетными датами и затем их объединить, с подсчетом превышения для каждого элемента.
+    - возможны дополнительные проходы по частям списка, при этом превышение должно считаться один раз для всего подсписка. Т. е., например, нельзя разбить список на 2 подсписка с четными и нечетными датами и затем их объединить с подсчетом превышения для каждого элемента.
 
 Временная сложность реализации должна быть O(N) (обратите внимание на п. 13 замечаний)  
 Решение должно быть рабочим в общем случае (должно работать в приложении с многими пользователями, не только при запуске `main`)  
@@ -225,12 +220,6 @@
 #### Сервлеты
 -  <a href="https://devcolibri.com/как-создать-servlet-полное-руководство/">Как создать Servlet? Полное руководство.</a>
 -  [Сервлеты](https://metanit.com/java/javaee/4.1.php)
-
-#### Туториалы по Spring
-- [Юрий Ткач: Spring Framework - The Basics](https://www.youtube.com/playlist?list=PL6jg6AGdCNaWF-sUH2QDudBRXo54zuN1t)
-- [Java Brains: Spring Framework](https://www.youtube.com/playlist?list=PLC97BDEFDCDD169D7)
-- [Тимур Батыршинов: Spring Core - основы фреймворка, ядро](https://www.youtube.com/watch?v=CfHDr-19WWY&list=PL8X2nqRlWfaYYP1-qXjdPKE7bXYkl6aL4)
-- [alishev: Spring Framework](https://www.youtube.com/playlist?list=PLAma_mKffTOR5o0WNHnY0mTjKxnCgSXrZ)
 
 #### JDBC, SQL
 -  <a href="https://habrahabr.ru/post/123636/">Основы SQL на примере задачи</a>

@@ -8,48 +8,32 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import static ru.javawebinar.topjava.UserTestData.*;
 
 
 @Repository
-public class InMemoryUserRepository implements UserRepository {
+public class InMemoryUserRepository extends InMemoryBaseRepository<User> implements UserRepository {
 
-    private final Map<Integer, User> repository = new ConcurrentHashMap<>();
-    private final AtomicInteger counter = new AtomicInteger(0);
-
-    @Override
-    public User save(User user) {
-        if (user.isNew()) {
-            user.setId(counter.incrementAndGet());
-            repository.put(user.getId(), user);
-            return user;
-        }
-        return repository.computeIfPresent(user.getId(), (id, oldUser) -> user);
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return repository.remove(id) != null;
-    }
-
-    @Override
-    public User get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public User getByEmail(String email) {
-        return repository.values().stream()
-                .filter(user -> email.equals(user.getEmail()))
-                .findFirst()
-                .orElse(null);
+    public void init() {
+        map.clear();
+        put(user);
+        put(admin);
+        put(guest);
+        counter.getAndSet(GUEST_ID + 1);
     }
 
     @Override
     public List<User> getAll() {
-        return repository.values().stream()
-                .sorted(Comparator.comparing(User::getName))
+        return getCollection().stream()
+                .sorted(Comparator.comparing(User::getName).thenComparing(User::getEmail))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return getCollection().stream()
+                .filter(u -> email.equals(u.getEmail()))
+                .findFirst()
+                .orElse(null);
     }
 }

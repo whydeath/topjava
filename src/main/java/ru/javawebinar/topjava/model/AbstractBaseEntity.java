@@ -3,6 +3,10 @@ package ru.javawebinar.topjava.model;
 public abstract class AbstractBaseEntity {
     protected Integer id;
 
+    // Добавляем конструктор по умолчанию
+    protected AbstractBaseEntity() {
+    }
+
     protected AbstractBaseEntity(Integer id) {
         this.id = id;
     }

@@ -89,6 +89,14 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Added Spring Test dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--DataBase-->
         <dependency>
             <groupId>org.postgresql</groupId>

@@ -1,19 +1,33 @@
 package ru.javawebinar.topjava.model;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
+@Table(name = "meal", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "meal_unique_user_datetime_idx")})
 public class Meal extends AbstractBaseEntity {
+
+    @Column(name = "date_time", nullable = false)
+    @NotNull
     private LocalDateTime dateTime;
 
+    @Column(name = "description", nullable = false)
+    @NotBlank  // заменяем @NotEmpty на @NotBlank для строк
     private String description;
 
+    @Column(name = "calories", nullable = false)
+    @Range(min = 10, max = 5000)
     private int calories;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)  // Lazy загрузка для оптимизации
+    @JoinColumn(name = "user_id", nullable = false)
+    @NotNull
     private User user;
 
     public Meal() {
@@ -38,6 +52,10 @@ public class Meal extends AbstractBaseEntity {
         return dateTime.toLocalDate();
     }
 
+    public LocalTime getTime() {
+        return dateTime.toLocalTime();
+    }
+
     public String getDescription() {
         return description;
     }
@@ -46,8 +64,8 @@ public class Meal extends AbstractBaseEntity {
         return calories;
     }
 
-    public LocalTime getTime() {
-        return dateTime.toLocalTime();
+    public User getUser() {
+        return user;
     }
 
     public void setDateTime(LocalDateTime dateTime) {
@@ -60,10 +78,6 @@ public class Meal extends AbstractBaseEntity {
 
     public void setCalories(int calories) {
         this.calories = calories;
-    }
-
-    public User getUser() {
-        return user;
     }
 
     public void setUser(User user) {
